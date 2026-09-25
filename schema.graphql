@@ -1,0 +1,26 @@
+"""
+Cliente corporativo. Raíz de la relación jerárquica hacia sus facturas.
+"""
+type Cliente {
+  id: ID!
+  nombre: String!
+  sector: String!
+  "Facturas asociadas al cliente (relación 1:N, resuelta vía DataLoader)"
+  facturas: [Factura!]!
+}
+
+"""
+Factura emitida a un cliente.
+"""
+type Factura {
+  id: ID!
+  monto: Float!
+  estado: String!
+}
+
+"""
+Punto de entrada de solo lectura de la API.
+"""
+type Query {
+  clientes: [Cliente!]!
+}
